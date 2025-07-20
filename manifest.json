@@ -150,13 +150,13 @@
     }
   ],
   "handle_links": "preferred",
-  "protocol_handlers": []
+  "protocol_handlers": [
     {
-      "protocol": "web+calcule-saude",
+      "protocol": "web+calcule-saude:",
       "url": "/protocol-handler?protocol=%s"
     },
     {
-      "protocol": "web+health-calc",
+      "protocol": "web+health-calc:",
       "url": "/health-protocol?data=%s"
     }
   ],
