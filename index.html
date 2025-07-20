@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="manifest" href="/manifest.json">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadoras de Saúde - IMC e Proteína | Grátis e Online</title>
+    <meta name="theme-color" content="#2ecc71">
+    <meta name="google-adsense-account" content="ca-pub-5825554897787593">
+    <meta name="description" content="Calcule seu IMC e descubra a quantidade ideal de proteína com nossas calculadoras online e gratuitas. Ferramentas de saúde práticas e rápidas." />
+    <meta name="keywords" content="calculadora IMC, proteína ideal, saúde online, índice de massa corporal, nutrição, ferramentas de saúde" />
+    <meta name="author" content="Thiago Evânio" />
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5825554897787593"
+     crossorigin="anonymous"></script>
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Calculadoras de Saúde - IMC e Proteína | Grátis e Online" />
+    <meta property="og:description" content="Ferramentas online para calcular IMC e proteína diária. 100% gratuitas, rápidas e fáceis de usar." />
+    <meta property="og:type" content="website" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Calculadoras de Saúde - IMC e Proteína" />
+    <meta name="twitter:description" content="Ferramentas gratuitas para monitorar sua saúde: IMC e proteína diária." />
+    <meta name="twitter:image" content="https://www.imceproteina.com.br/og-image.png" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CNGFM2WGFW"></script>
+    <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'G-CNGFM2WGFW');
+   </script>
+    
+    <!-- Dados Estruturados -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Calculadora de IMC",
+      "description": "Calculadoras IMC gratuitas: IMC, proteína ideal e mais.",
+      "url": "https://www.imceproteina.com.br",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "BRL"
+      },
+      "featureList": [
+        "Calculadora de IMC",
+        "Calculadora de Proteína Ideal"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "Calculadora de IMC"
+      }
+    }
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>Calcule Sua Saúde</h1>
+                </div>
+
+                <nav class="nav-desktop">
+                    <a href="#home">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                            <polyline points="9,22 9,12 15,12 15,22"/>
+                        </svg>
+                        Início
+                    </a>
+                    <a href="#bmi-calculator">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/>
+                        </svg>
+                        Calc. IMC
+                    </a>
+                    <a href="#protein-calculator">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="13,2 3,14 12,14 11,22 21,10 12,10"/>
+                        </svg>
+                        Calc. Proteína
+                    </a>
+                </nav>
+
+                <button class="menu-button" onclick="toggleMobileMenu()">
+                    <svg id="menu-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="4" x2="20" y1="6" y2="6"/>
+                        <line x1="4" x2="20" y1="12" y2="12"/>
+                        <line x1="4" x2="20" y1="18" y2="18"/>
+                    </svg>
+                    <svg id="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+                        <path d="m18 6-12 12"/>
+                        <path d="m6 6 12 12"/>
+                    </svg>
+                </button>
+            </div>
+
+            <nav id="mobile-menu" class="nav-mobile">
+                <a href="#home" onclick="closeMobileMenu()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                        <polyline points="9,22 9,12 15,12 15,22"/>
+                    </svg>
+                    Início
+                </a>
+                <a href="#bmi-calculator" onclick="closeMobileMenu()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/>
+                    </svg>
+                    Calc. IMC
+                </a>
+                <a href="#protein-calculator" onclick="closeMobileMenu()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="13,2 3,14 12,14 11,22 21,10 12,10"/>
+                    </svg>
+                    Calc. Proteína
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="home-section">
+            <div class="container">
+                <div class="fade-in">
+                    <h1 class="home-title">Calculadoras de Saúde</h1>
+                    <p class="home-description">
+                        Ferramentas gratuitas e precisas para monitorar sua saúde. 
+                        Calcule seu IMC e descubra sua necessidade diária de proteína.
+                    </p>
+                </div>
+
+                <div class="features-grid fade-in-delay-1">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/>
+                            </svg>
+                        </div>
+                        <h3>Calculadora de IMC</h3>
+                        <p>Descubra se você está no peso ideal para sua altura e receba dicas personalizadas.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="13,2 3,14 12,14 11,22 21,10 12,10"/>
+                            </svg>
+                        </div>
+                        <h3>Calculadora de Proteína</h3>
+                        <p>Calcule a quantidade ideal de proteína baseada no seu perfil e atividade física.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2v20m8-10H4"/>
+                            </svg>
+                        </div>
+                        <h3>100% Gratuito</h3>
+                        <p>Todas as ferramentas são completamente gratuitas e não requerem cadastro.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BMI Calculator Section -->
+        <section id="bmi-calculator" class="section gradient-bg">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <div class="section-icon" style="background-color: #fef2f2; color: #dc2626;">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/>
+                        </svg>
+                    </div>
+                    <h2 class="section-title fade-in-delay-1">Calculadora de IMC</h2>
+                    <p class="section-description fade-in-delay-2">
+                        Calcule seu Índice de Massa Corporal e descubra se você está no peso ideal. 
+                        Receba dicas personalizadas para manter uma vida saudável.
+                    </p>
+                </div>
+
+                <div class="card fade-in-delay-3">
+                    <h3 class="card-title">Seus Dados</h3>
+                    
+                    <form id="bmi-form">
+                        <div class="form-group animate-slideInLeft">
+                            <label class="form-label">Peso (kg)</label>
+                            <div class="input-container">
+                                <input type="number" step="0.1" id="bmi-weight" class="form-input" placeholder="70.5">
+                                <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="m21 16-4 4-4-4"/>
+                                    <path d="M17 20V4"/>
+                                    <path d="m3 8 4-4 4 4"/>
+                                    <path d="M7 4v16"/>
+                                </svg>
+                            </div>
+                            <div id="bmi-weight-error" class="error-message hidden"></div>
+                        </div>
+
+                        <div class="form-group animate-slideInLeft" style="animation-delay: 0.2s;">
+                            <label class="form-label">Altura (cm)</label>
+                            <div class="input-container">
+                                <input type="number" id="bmi-height" class="form-input" placeholder="175">
+                                <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 3 9 15l-5-5-3 3"/>
+                                </svg>
+                            </div>
+                            <div id="bmi-height-error" class="error-message hidden"></div>
+                        </div>
+
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary btn-full" onclick="calculateBMI()">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/>
+                                </svg>
+                                Calcular IMC
+                            </button>
+                            <button type="button" class="btn btn-secondary" onclick="resetBMI()">
+                                Limpar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- BMI Result -->
+                <div id="bmi-result" class="result-card hidden">
+                    <h3 class="card-title">Seu Resultado</h3>
+                    
+                    <div class="result-value">
+                        <p class="result-label">Seu IMC é</p>
+                        <p id="bmi-value" class="result-number">0.0</p>
+                        <p id="bmi-category" class="result-category"></p>
+                    </div>
+
+                    <div class="result-description">
+                        <p id="bmi-description"></p>
+                    </div>
+
+                    <div class="tips-section">
+                        <h4 class="tips-title">Dicas para uma vida saudável:</h4>
+                        <div class="tip-item">
+                            <div class="tip-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                </svg>
+                            </div>
+                            <div class="tip-content">
+                                <h4>Exercite-se regularmente</h4>
+                                <p>Pratique pelo menos 150 minutos de atividade física moderada por semana</p>
+                            </div>
+                        </div>
+                        <div class="tip-item">
+                            <div class="tip-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="3"/>
+                                    <path d="M12 1v6m0 6v6"/>
+                                </svg>
+                            </div>
+                            <div class="tip-content">
+                                <h4>Alimentação equilibrada</h4>
+                                <p>Mantenha uma dieta rica em frutas, vegetais e proteínas magras</p>
+                            </div>
+                        </div>
+                        <div class="tip-item">
+                            <div class="tip-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/>
+                                </svg>
+                            </div>
+                            <div class="tip-content">
+                                <h4>Acompanhamento médico</h4>
+                                <p>Consulte profissionais de saúde para orientação personalizada</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BMI Reference Table -->
+                <div class="reference-table fade-in">
+                    <h3 class="table-title">Tabela de Referência do IMC</h3>
+                    
+                    <div class="bmi-ranges">
+                        <div class="bmi-range bmi-underweight">
+                            <div class="range-value">Abaixo de 18,5</div>
+                            <div class="range-category">Abaixo do peso</div>
+                        </div>
+                        <div class="bmi-range bmi-normal">
+                            <div class="range-value">18,5 - 24,9</div>
+                            <div class="range-category">Peso normal</div>
+                        </div>
+                        <div class="bmi-range bmi-overweight">
+                            <div class="range-value">25,0 - 29,9</div>
+                            <div class="range-category">Sobrepeso</div>
+                        </div>
+                        <div class="bmi-range bmi-obese1">
+                            <div class="range-value">30,0 - 34,9</div>
+                            <div class="range-category">Obesidade Grau I</div>
+                        </div>
+                        <div class="bmi-range bmi-obese2">
+                            <div class="range-value">35,0 - 39,9</div>
+                            <div class="range-category">Obesidade Grau II</div>
+                        </div>
+                        <div class="bmi-range bmi-obese3">
+                            <div class="range-value">40,0 ou mais</div>
+                            <div class="range-category">Obesidade Grau III</div>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <p>
+                            <strong>Importante:</strong> O IMC é uma ferramenta de triagem e não um diagnóstico. 
+                            Para uma avaliação completa da sua saúde, consulte sempre um profissional médico.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Protein Calculator Section -->
+        <section id="protein-calculator" class="section gradient-bg">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <div class="section-icon" style="background-color: #eff6ff; color: #2563eb;">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="13,2 3,14 12,14 11,22 21,10 12,10"/>
+                        </svg>
+                    </div>
+                    <h2 class="section-title fade-in-delay-1">Calculadora de Proteína</h2>
+                    <p class="section-description fade-in-delay-2">
+                        Descubra a quantidade ideal de proteína que você precisa consumir diariamente 
+                        baseada no seu perfil físico e nível de atividade.
+                    </p>
+                </div>
+
+                <div class="card fade-in-delay-3">
+                    <h3 class="card-title">Seus Dados</h3>
+                    
+                    <form id="protein-form">
+                        <div class="form-group animate-slideInLeft">
+                            <label class="form-label">Peso (kg)</label>
+                            <div class="input-container">
+                                <input type="number" step="0.1" id="protein-weight" class="form-input" placeholder="70.5">
+                                <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="m21 16-4 4-4-4"/>
+                                    <path d="M17 20V4"/>
+                                    <path d="m3 8 4-4 4 4"/>
+                                    <path d="M7 4v16"/>
+                                </svg>
+                            </div>
+                            <div id="protein-weight-error" class="error-message hidden"></div>
+                        </div>
+
+                        <div class="form-group animate-slideInLeft" style="animation-delay: 0.1s;">
+                            <label class="form-label">Altura (cm)</label>
+                            <div class="input-container">
+                                <input type="number" id="protein-height" class="form-input" placeholder="175">
+                                <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 3 9 15l-5-5-3 3"/>
+                                </svg>
+                            </div>
+                            <div id="protein-height-error" class="error-message hidden"></div>
+                        </div>
+
+                        <div class="form-group animate-slideInLeft" style="animation-delay: 0.2s;">
+                            <label class="form-label">Idade (anos)</label>
+                            <div class="input-container">
+                                <input type="number" id="protein-age" class="form-input" placeholder="30">
+                                <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="12" cy="7" r="4"/>
+                                </svg>
+                            </div>
+                            <div id="protein-age-error" class="error-message hidden"></div>
+                        </div>
+
+                        <div class="form-group animate-slideInLeft" style="animation-delay: 0.3s;">
+                            <label class="form-label">Sexo</label>
+                            <div class="gender-selector">
+                                <div class="gender-option" onclick="selectGender('male')">
+                                    Masculino
+                                </div>
+                                <div class="gender-option" onclick="selectGender('female')">
+                                    Feminino
+                                </div>
+                            </div>
+                            <div id="protein-gender-error" class="error-message hidden"></div>
+                        </div>
+
+                        <div class="form-group animate-slideInLeft" style="animation-delay: 0.4s;">
+                            <label class="form-label">Nível de Atividade Física</label>
+                            <div class="activity-selector">
+                                <div class="activity-option" onclick="selectActivity('sedentary')">
+                                    <div class="activity-title">Sedentário</div>
+                                    <div class="activity-description">Pouco ou nenhum exercício</div>
+                                </div>
+                                <div class="activity-option" onclick="selectActivity('light')">
+                                    <div class="activity-title">Levemente ativo</div>
+                                    <div class="activity-description">Exercício leve 1-3 dias/semana</div>
+                                </div>
+                                <div class="activity-option" onclick="selectActivity('moderate')">
+                                    <div class="activity-title">Moderadamente ativo</div>
+                                    <div class="activity-description">Exercício moderado 3-5 dias/semana</div>
+                                </div>
+                                <div class="activity-option" onclick="selectActivity('active')">
+                                    <div class="activity-title">Muito ativo</div>
+                                    <div class="activity-description">Exercício intenso 6-7 dias/semana</div>
+                                </div>
+                                <div class="activity-option" onclick="selectActivity('extra')">
+                                    <div class="activity-title">Extremamente ativo</div>
+                                    <div class="activity-description">Exercício muito intenso, trabalho físico</div>
+                                </div>
+                            </div>
+                            <div id="protein-activity-error" class="error-message hidden"></div>
+                        </div>
+
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary btn-full" onclick="calculateProtein()" style="background-color: #2563eb;">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polygon points="13,2 3,14 12,14 11,22 21,10 12,10"/>
+                                </svg>
+                                Calcular Proteína
+                            </button>
+                            <button type="button" class="btn btn-secondary" onclick="resetProtein()">
+                                Limpar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Protein Result -->
+                <div id="protein-result" class="result-card hidden">
+                    <h3 class="card-title">Sua Necessidade de Proteína</h3>
+                    
+                    <div class="result-value protein">
+                        <p class="result-label protein">Proteína diária recomendada</p>
+                        <p id="protein-value" class="result-number protein">0g</p>
+                        <p id="protein-per-kg" class="result-category" style="color: #1d4ed8;"></p>
+                    </div>
+
+                    <div class="result-description protein">
+                        <p id="protein-description"></p>
+                    </div>
+
+                    <div class="tips-section">
+                        <h4 class="tips-title">Boas fontes de proteína:</h4>
+                        <div class="tip-item">
+                            <div class="tip-icon protein">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>
+                                </svg>
+                            </div>
+                            <div class="tip-content">
+                                <h4>Carnes magras</h4>
+                                <p>Frango, peixe, carne bovina magra - 20-25g por 100g</p>
+                            </div>
+                        </div>
+                        <div class="tip-item">
+                            <div class="tip-icon protein">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="3"/>
+                                    <path d="M12 1v6m0 6v6"/>
+                                </svg>
+                            </div>
+                            <div class="tip-content">
+                                <h4>Ovos e laticínios</h4>
+                                <p>Ovos, leite, queijos, iogurte - 6-20g por porção</p>
+                            </div>
+                        </div>
+                        <div class="tip-item">
+                            <div class="tip-icon protein">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/>
+                                </svg>
+                            </div>
+                            <div class="tip-content">
+                                <h4>Leguminosas</h4>
+                                <p>Feijão, lentilha, grão-de-bico - 8-15g por 100g</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Protein Information -->
+                <div class="reference-table fade-in">
+                    <h3 class="table-title">Por que a proteína é importante?</h3>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card" style="background: rgba(59, 130, 246, 0.1);">
+                            <div class="feature-icon" style="background: rgba(59, 130, 246, 0.2);">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                </svg>
+                            </div>
+                            <h4>Construção Muscular</h4>
+                            <p>Essencial para reparar e construir tecido muscular após exercícios</p>
+                        </div>
+                        
+                        <div class="feature-card" style="background: rgba(34, 197, 94, 0.1);">
+                            <div class="feature-icon" style="background: rgba(34, 197, 94, 0.2);">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="3"/>
+                                    <path d="M12 1v6m0 6v6"/>
+                                </svg>
+                            </div>
+                            <h4>Saciedade</h4>
+                            <p>Ajuda a manter a sensação de saciedade por mais tempo</p>
+                        </div>
+                        
+                        <div class="feature-card" style="background: rgba(168, 85, 247, 0.1);">
+                            <div class="feature-icon" style="background: rgba(168, 85, 247, 0.2);">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/>
+                                </svg>
+                            </div>
+                            <h4>Metabolismo</h4>
+                            <p>Aumenta o gasto energético e acelera o metabolismo</p>
+                        </div>
+                    </div>
+
+                    <div class="info-box warning">
+                        <p>
+                            <strong>Importante:</strong> Esta calculadora fornece uma estimativa baseada em fórmulas científicas. 
+                            Para necessidades específicas ou condições médicas, consulte um nutricionista ou médico.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <p>Email: <a href="mailto:contato@calculesuasaude.com.br">contato@calculesuasaude.com.br</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Redes Sociais</h3>
+                <div class="social-links">
+                    <a href="#" target="_blank" aria-label="Instagram">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </a>
+                    <a href="#" target="_blank" aria-label="Telegram">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-send"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Informações</h3>
+                <p><a href="politica.html">Política de Privacidade</a></p>
+                <p><a href="#">Termos de Uso</a></p>
+                <p><a href="#">FAQ</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Calcule Sua Saúde. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <!-- Service Worker para funcionamento offline -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(reg => console.log('✅ Service Worker registrado!', reg))
+          .catch(err => console.error('❌ Erro ao registrar o Service Worker:', err));
+      }
+    </script>
+
+</body>
+</html>

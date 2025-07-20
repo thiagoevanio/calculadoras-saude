@@ -1,0 +1,17 @@
+
+/
+├── manifest.json
+├── service-worker.js
+├── icons/
+│   ├── icon-192.png
+│   └── icon-512.png
+└── index.html (ou sua página principal)
+
+/
+├── manifest.json
+├── service-worker.js
+├── icons/
+│   ├── icon-192.png
+│   └── icon-512.png
+└── index.html (ou sua página principal)
+ 9572ca4ed17ac3850dc9129210e47fd66765c7ba
