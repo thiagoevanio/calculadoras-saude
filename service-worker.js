@@ -491,9 +491,10 @@ async function registerBackgroundSync(request) {
 async function registerPeriodicSync() {
   try {
     const registration = await self.registration;
-    
-    if ('periodicSync' in registration) {
-      await registration.periodicSync.register(SYNC_TAGS.PERIODIC_SYNC, {
+    if (
+      'periodicSync' in registration &&
+      (await navigator.permissions.query({ name: 'periodic-background-sync' })).state === 'granted'
+    ) {await registration.periodicSync.register(SYNC_TAGS.PERIODIC_SYNC, {
         minInterval: 24 * 60 * 60 * 1000 // 24 horas
       });
       console.log('[SW] Periodic sync registrado');
@@ -514,7 +515,7 @@ async function storeForSync(request) {
       url: request.url,
       method: request.method,
       headers: Object.fromEntries(request.headers.entries()),
-      body: await request.text(),
+      body: await request.clone().text(),
       timestamp: Date.now()
     };
     
