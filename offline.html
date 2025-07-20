@@ -3,333 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calcule Sua Saúde - Offline</title>
+    <title>Offline - Calcule Sua Saúde</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
+            margin: 0;
+            background-color: #f0f0f0;
+            color: #333;
             text-align: center;
-            padding: 20px;
         }
-
-        .offline-container {
-            max-width: 500px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-
-        .offline-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 30px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 40px;
+        h1 {
+            color: #e74c3c;
         }
-
-        .offline-title {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: white;
+        p {
+            margin-bottom: 20px;
         }
-
-        .offline-subtitle {
-            font-size: 18px;
-            margin-bottom: 30px;
-            opacity: 0.9;
-            line-height: 1.5;
+        a {
+            color: #3498db;
+            text-decoration: none;
         }
-
-        .offline-features {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 25px;
-            margin: 30px 0;
-            text-align: left;
-        }
-
-        .offline-features h3 {
-            font-size: 20px;
-            margin-bottom: 15px;
-            text-align: center;
-            color: white;
-        }
-
-        .feature-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .feature-list li {
-            padding: 8px 0;
-            display: flex;
-            align-items: center;
-            font-size: 16px;
-            opacity: 0.9;
-        }
-
-        .feature-list li::before {
-            content: "✓";
-            color: #2ecc71;
-            font-weight: bold;
-            margin-right: 10px;
-            background: white;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-        }
-
-        .retry-button {
-            background: white;
-            color: #2ecc71;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin: 20px 10px;
-            min-width: 120px;
-        }
-
-        .retry-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .retry-button:active {
-            transform: translateY(0);
-        }
-
-        .secondary-button {
-            background: transparent;
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .secondary-button:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.5);
-        }
-
-        .connection-status {
-            margin-top: 30px;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            font-size: 14px;
-            opacity: 0.8;
-        }
-
-        .status-indicator {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            margin-right: 8px;
-            background: #e74c3c;
-            animation: pulse 2s infinite;
-        }
-
-        .status-indicator.online {
-            background: #2ecc71;
-            animation: none;
-        }
-
-        @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.5; }
-            100% { opacity: 1; }
-        }
-
-        .offline-tips {
-            margin-top: 30px;
-            text-align: left;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            padding: 20px;
-        }
-
-        .offline-tips h4 {
-            color: white;
-            margin-bottom: 10px;
-            font-size: 16px;
-        }
-
-        .offline-tips p {
-            font-size: 14px;
-            opacity: 0.8;
-            line-height: 1.4;
-        }
-
-        @media (max-width: 480px) {
-            .offline-container {
-                padding: 30px 20px;
-                margin: 10px;
-            }
-            
-            .offline-title {
-                font-size: 24px;
-            }
-            
-            .offline-subtitle {
-                font-size: 16px;
-            }
-            
-            .retry-button {
-                padding: 12px 25px;
-                font-size: 14px;
-                margin: 10px 5px;
-                min-width: 100px;
-            }
+        a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <div class="offline-container">
-        <div class="offline-icon">
-            📱
-        </div>
-        
-        <h1 class="offline-title">Você está offline</h1>
-        <p class="offline-subtitle">
-            Não se preocupe! O Calcule Sua Saúde funciona perfeitamente offline. 
-            Você pode continuar usando todas as funcionalidades.
-        </p>
-
-        <div class="offline-features">
-            <h3>Disponível Offline</h3>
-            <ul class="feature-list">
-                <li>Calcular IMC (Índice de Massa Corporal)</li>
-                <li>Calcular necessidades de proteínas</li>
-                <li>Calcular Taxa Metabólica Basal (TMB)</li>
-                <li>Visualizar histórico de cálculos</li>
-                <li>Acessar todas as funcionalidades do app</li>
-            </ul>
-        </div>
-
-        <div class="connection-status">
-            <span class="status-indicator" id="statusIndicator"></span>
-            <span id="connectionStatus">Verificando conexão...</span>
-        </div>
-
-        <div>
-            <button class="retry-button" onclick="checkConnection()">
-                Tentar Novamente
-            </button>
-            <button class="retry-button secondary-button" onclick="goToApp()">
-                Usar Offline
-            </button>
-        </div>
-
-        <div class="offline-tips">
-            <h4>💡 Dica</h4>
-            <p>
-                Seus dados serão sincronizados automaticamente quando a conexão for restaurada. 
-                Continue usando o app normalmente!
-            </p>
-        </div>
+    <div class="container">
+        <h1>Você está offline!</h1>
+        <p>Parece que você não está conectado à internet.</p>
+        <p>Por favor, verifique sua conexão e tente novamente.</p>
+        <p>Algumas funcionalidades podem não estar disponíveis.</p>
+        <p><a href="/">Tentar novamente</a></p>
     </div>
-
-    <script>
-        // Verificar status da conexão
-        function updateConnectionStatus() {
-            const indicator = document.getElementById('statusIndicator');
-            const status = document.getElementById('connectionStatus');
-            
-            if (navigator.onLine) {
-                indicator.classList.add('online');
-                status.textContent = 'Conexão restaurada! Redirecionando...';
-                setTimeout(() => {
-                    window.location.href = '/';
-                }, 2000);
-            } else {
-                indicator.classList.remove('online');
-                status.textContent = 'Sem conexão com a internet';
-            }
-        }
-
-        // Verificar conexão manualmente
-        function checkConnection() {
-            updateConnectionStatus();
-            
-            if (navigator.onLine) {
-                // Tentar fazer uma requisição real para verificar conectividade
-                fetch('/', { method: 'HEAD', cache: 'no-cache' })
-                    .then(() => {
-                        window.location.href = '/';
-                    })
-                    .catch(() => {
-                        document.getElementById('connectionStatus').textContent = 
-                            'Conexão instável. Tente novamente em alguns segundos.';
-                    });
-            }
-        }
-
-        // Ir para o app mesmo offline
-        function goToApp() {
-            window.location.href = '/';
-        }
-
-        // Monitorar mudanças na conexão
-        window.addEventListener('online', updateConnectionStatus);
-        window.addEventListener('offline', updateConnectionStatus);
-
-        // Verificar status inicial
-        updateConnectionStatus();
-
-        // Verificar periodicamente
-        setInterval(updateConnectionStatus, 5000);
-
-        // Registrar Service Worker se não estiver registrado
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/service-worker-updated.js')
-                .then(registration => {
-                    console.log('Service Worker registrado:', registration);
-                })
-                .catch(error => {
-                    console.log('Erro ao registrar Service Worker:', error);
-                });
-        }
-
-        // Escutar mensagens do Service Worker
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.addEventListener('message', event => {
-                if (event.data && event.data.type === 'SYNC_COMPLETE') {
-                    const status = document.getElementById('connectionStatus');
-                    status.textContent = 'Dados sincronizados com sucesso!';
-                    
-                    setTimeout(() => {
-                        updateConnectionStatus();
-                    }, 2000);
-                }
-            });
-        }
-    </script>
 </body>
 </html>
-
