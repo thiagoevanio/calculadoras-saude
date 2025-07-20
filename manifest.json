@@ -58,5 +58,30 @@
       "platform": "itunes",
       "url": "https://apps.apple.com/us/app/id1234567890"
     }
+  ],
+  "display_override": ["window-controls-overlay"],
+  "side_panel": {
+    "type": "edge"
+  },
+  "file_handlers": [
+    {
+      "action": "/open-file",
+      "accept": {
+        "application/pdf": [".pdf"],
+        "image/jpeg": [".jpg", ".jpeg"]
+      }
+    }
+  ],
+  "handle_links": {
+    "action": "/open-link",
+    "filter": {
+      "include": ["https://example.com/*"]
+    }
+  },
+  "protocol_handlers": [
+    {
+      "protocol": "myapp",
+      "url": "/open-protocol?url=%s"
+    }
   ]
 }
