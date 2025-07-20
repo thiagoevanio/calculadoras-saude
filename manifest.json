@@ -153,11 +153,11 @@
   "protocol_handlers": [
     {
       "protocol": "web+calcule-saude",
-      "url": "/protocol-handler?protocol=%s"
+      "url": "/protocol-handler?protocol"
     },
     {
       "protocol": "web+health-calc",
-      "url": "/health-protocol?data=%s"
+      "url": "/health-protocol?data"
     }
   ],
   "share_target": {
