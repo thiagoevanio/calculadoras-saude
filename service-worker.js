@@ -8,7 +8,7 @@ const RUNTIME_CACHE = 'calcule-sua-saude-runtime-v2';
 
 // URLs essenciais para cache offline
 const ESSENTIAL_URLS = [
-  '/',
+  'https://imceproteina.com.br/',
   'index.html',
   'offline.html',
   'manifest.json',
@@ -248,7 +248,7 @@ self.addEventListener('notificationclick', event => {
         if (action === 'view' && notificationData.url) {
           return clients.openWindow(notificationData.url);
         } else if (action !== 'dismiss') {
-          return clients.openWindow('/');
+          return clients.openWindow('https://imceproteina.com.br/');
         }
       })
   );
@@ -366,7 +366,7 @@ async function handleWriteOperation(request) {
     console.log('[SW] Operação de escrita falhou, registrando para sync');
     
     // Armazenar dados para sincronização posterior
-    await storeForSync(request.clone());
+    await storeForSync(request);
     
     return new Response(JSON.stringify({
       success: false,
@@ -491,22 +491,11 @@ async function registerBackgroundSync(request) {
 async function registerPeriodicSync() {
   try {
     const registration = await self.registration;
-
-    if ('periodicSync' in registration && 'permissions' in navigator) {
-      const status = await navigator.permissions.query({ name: 'periodic-background-sync' });
-      if (status.state === 'granted') {
-        await registration.periodicSync.register(SYNC_TAGS.PERIODIC_SYNC, {
-          minInterval: 24 * 60 * 60 * 1000 // 24 horas
-        });
-        console.log('[SW] Periodic sync registrado');
-      } else {
-        console.warn('[SW] Permissão para periodic sync negada');
-      }
-    }
-  } catch (error) {
-    console.error('[SW] Erro ao registrar periodic sync:', error);
-  }
-});
+    
+    if ('periodicSync' in registration) {
+      await registration.periodicSync.register(SYNC_TAGS.PERIODIC_SYNC, {
+        minInterval: 24 * 60 * 60 * 1000 // 24 horas
+      });
       console.log('[SW] Periodic sync registrado');
     }
   } catch (error) {
