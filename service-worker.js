@@ -8,7 +8,7 @@ const RUNTIME_CACHE = 'calcule-sua-saude-runtime-v2';
 
 // URLs essenciais para cache offline
 const ESSENTIAL_URLS = [
-  'https://imceproteina.com.br/',
+  '/',
   'index.html',
   'offline.html',
   'manifest.json',
@@ -248,7 +248,7 @@ self.addEventListener('notificationclick', event => {
         if (action === 'view' && notificationData.url) {
           return clients.openWindow(notificationData.url);
         } else if (action !== 'dismiss') {
-          return clients.openWindow('https://imceproteina.com.br/');
+          return clients.openWindow('/');
         }
       })
   );
@@ -387,7 +387,7 @@ async function performBackgroundSync() {
   console.log('[SW] Executando sincronização em segundo plano');
   
   try {
-    const pendingRequests = await getPendingRequests();
+    const pendingRequests = await getPendingRequests() || [];
     
     for (const requestData of pendingRequests) {
       try {
