@@ -1,4 +1,3 @@
-service-worker-updated.js
 // Service Worker Completo - Calcule Sua Saúde
 // Versão: 2.0.0
 // Funcionalidades: Cache offline, Background Sync, Periodic Sync, Push Notifications
