@@ -2,13 +2,13 @@
   "id": "calcule-sua-saude-app",
   "name": "Calcule Sua Saúde",
   "short_name": "C-Saúde",
-  "start_url": "https://imceproteina.com.br/",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#2ecc71",
   "orientation": "portrait",
   "lang": "pt-BR",
-  "scope": "https://imceproteina.com.br/",
+  "scope": "/",
   "description": "Calcule IMC, proteínas, TMB e muito mais. Sua saúde em um clique!",
   "categories": ["health", "fitness", "medical", "lifestyle"],
   "icons": [
@@ -150,7 +150,7 @@
     }
   ],
   "handle_links": "preferred",
-  "protocol_handlers": [
+  "protocol_handlers": []
     {
       "protocol": "web+calcule-saude",
       "url": "/protocol-handler?protocol=%s"
