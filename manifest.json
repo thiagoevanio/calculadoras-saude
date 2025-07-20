@@ -119,5 +119,20 @@
         }
       ]
     }
+  ],
+  "widgets": [
+    {
+      "id": "health-widgets", 
+      "name": "Widgets de Saúde",
+      "description": "Widget para calcular índices de saúde.",
+      "url": "/widget",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    }
   ]
 }
