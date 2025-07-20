@@ -83,5 +83,41 @@
       "protocol": "myapp",
       "url": "/open-protocol?url=%s"
     }
+  ],
+  "share_target": {
+    "action": "/share",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
+  "shortcuts": [
+    {
+      "name": "Calcule IMC",
+      "short_name": "IMC",
+      "description": "Calcule seu Índice de Massa Corporal.",
+      "url": "/imc",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Calcule Proteínas",
+      "short_name": "Proteínas",
+      "description": "Calcule suas necessidades de proteína.",
+      "url": "/proteinas",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    }
   ]
 }
