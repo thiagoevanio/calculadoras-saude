@@ -9,25 +9,24 @@ const RUNTIME_CACHE = 'calcule-sua-saude-runtime-v2';
 // URLs essenciais para cache offline
 const ESSENTIAL_URLS = [
   '/',
-  '/index.html',
-  '/manifest.json',
-  '/offline.html',
-  '/icons/icon-72.png',
-  '/icons/icon-96.png',
-  '/icons/icon-128.png',
-  '/icons/icon-144.png',
-  '/icons/icon-152.png',
-  '/icons/icon-192.png',
-  '/icons/icon-384.png',
-  '/icons/icon-512.png',
-  '/icons/icon-1024.png',
-  '/icons/maskable-icon-192.png',
-  '/icons/maskable-icon-512.png',
-  '/css/styles.css',
-  '/js/app.js',
-  '/js/imc.js',
-  '/js/proteinas.js',
-  '/js/tmb.js'
+  'index.html',
+  'offline.html',
+  'manifest.json',
+  'style.css',
+  'script.js',
+  'sw-registration.js',
+  'favicon.png',
+  'icons/icon-72.png',
+  'icons/icon-96.png',
+  'icons/icon-128.png',
+  'icons/icon-144.png',
+  'icons/icon-152.png',
+  'icons/icon-192.png',
+  'icons/icon-384.png',
+  'icons/icon-512.png',
+  'icons/icon-1024.png',
+  'icons/maskable-icon-192.png',
+  'icons/maskable-icon-512.png'
 ];
 
 // URLs para cache dinâmico
