@@ -366,7 +366,7 @@ async function handleWriteOperation(request) {
     console.log('[SW] Operação de escrita falhou, registrando para sync');
     
     // Armazenar dados para sincronização posterior
-    await storeForSync(request);
+    await storeForSync(request.clone());
     
     return new Response(JSON.stringify({
       success: false,
@@ -491,12 +491,22 @@ async function registerBackgroundSync(request) {
 async function registerPeriodicSync() {
   try {
     const registration = await self.registration;
-    if (
-      'periodicSync' in registration &&
-      (await navigator.permissions.query({ name: 'periodic-background-sync' })).state === 'granted'
-    ) {await registration.periodicSync.register(SYNC_TAGS.PERIODIC_SYNC, {
-        minInterval: 24 * 60 * 60 * 1000 // 24 horas
-      });
+
+    if ('periodicSync' in registration && 'permissions' in navigator) {
+      const status = await navigator.permissions.query({ name: 'periodic-background-sync' });
+      if (status.state === 'granted') {
+        await registration.periodicSync.register(SYNC_TAGS.PERIODIC_SYNC, {
+          minInterval: 24 * 60 * 60 * 1000 // 24 horas
+        });
+        console.log('[SW] Periodic sync registrado');
+      } else {
+        console.warn('[SW] Permissão para periodic sync negada');
+      }
+    }
+  } catch (error) {
+    console.error('[SW] Erro ao registrar periodic sync:', error);
+  }
+});
       console.log('[SW] Periodic sync registrado');
     }
   } catch (error) {
@@ -515,7 +525,7 @@ async function storeForSync(request) {
       url: request.url,
       method: request.method,
       headers: Object.fromEntries(request.headers.entries()),
-      body: await request.clone().text(),
+      body: await request.text(),
       timestamp: Date.now()
     };
     
