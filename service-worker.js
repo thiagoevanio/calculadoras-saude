@@ -389,17 +389,47 @@ async function performBackgroundSync() {
   try {
     const pendingRequests = await getPendingRequests();
     
-    for (const requestData of pendingRequests) {
-      try {
-        const response = await fetch(requestData.url, requestData.options);
-        if (response.ok) {
-          await removePendingRequest(requestData.id);
-          console.log('[SW] Sincronização bem-sucedida para:', requestData.url);
+    // --- INÍCIO DA CORREÇÃO ---
+    // Adicionamos uma verificação para garantir que 'pendingRequests' é um array e não está vazio.
+    if (pendingRequests && pendingRequests.length > 0) {
+      console.log(`[SW] Encontradas ${pendingRequests.length} requisições para sincronizar.`);
+      
+      for (const requestData of pendingRequests) {
+        try {
+          // Recriamos o objeto de opções para o fetch
+          const requestOptions = {
+            method: requestData.method,
+            headers: new Headers(requestData.headers),
+            body: requestData.body
+          };
+
+          const response = await fetch(requestData.url, requestOptions);
+          
+          if (response.ok) {
+            await removePendingRequest(requestData.id);
+            console.log('[SW] Sincronização bem-sucedida para:', requestData.url);
+          } else {
+            // Opcional: Tratar casos onde o servidor retorna um erro (4xx, 5xx)
+            console.warn(`[SW] Falha na sincronização para ${requestData.url}. Status: ${response.status}`);
+          }
+        } catch (error) {
+          console.error('[SW] Erro ao processar uma requisição de sincronização:', error);
+          // O loop continua para a próxima requisição
         }
-      } catch (error) {
-        console.error('[SW] Erro na sincronização:', error);
       }
+      
+      // Notificar usuário sobre sincronização
+      await showSyncNotification();
+
+    } else {
+      console.log('[SW] Nenhuma requisição pendente para sincronizar.');
     }
+    // --- FIM DA CORREÇÃO ---
+    
+  } catch (error) {
+    console.error('[SW] Erro crítico na sincronização em segundo plano:', error);
+  }
+}
     
     // Notificar usuário sobre sincronização
     await showSyncNotification();
