@@ -20,7 +20,7 @@
     async function registerServiceWorker() {
         try {
             // Registrar o Service Worker
-        const registration = await navigator.serviceWorker.register(\"/service-worker.js\", { scope: '/' });
+const registration = await navigator.serviceWorker.register("/service-worker.js\", { scope: '/' });
 
         console.log('[App] Service Worker registrado com sucesso:', registration);
 
