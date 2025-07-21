@@ -382,7 +382,6 @@ async function handleWriteOperation(request) {
 // ==========================================
 // FUNÇÕES DE SINCRONIZAÇÃO
 // ==========================================
-
 async function performBackgroundSync() {
   console.log('[SW] Executando sincronização em segundo plano');
   
@@ -430,15 +429,6 @@ async function performBackgroundSync() {
     console.error('[SW] Erro crítico na sincronização em segundo plano:', error);
   }
 }
-    
-    // Notificar usuário sobre sincronização
-    await showSyncNotification();
-    
-  } catch (error) {
-    console.error('[SW] Erro na sincronização em segundo plano:', error);
-  }
-}
-
 async function performPeriodicSync() {
   console.log('[SW] Executando sincronização periódica');
   
