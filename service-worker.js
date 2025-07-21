@@ -519,11 +519,11 @@ async function storeForSync(request) {
     };
     
     const db = await openDB();
-    const transaction = db.transaction([\'pending-requests\'], \'readwrite\');
-    const store = transaction.objectStore(\'pending-requests\');
+    const transaction = db.transaction(['pending-requests'], 'readwrite');
+    const store = transaction.objectStore('pending-requests');
     await store.add(requestData);
     
-    console.log(\'[SW] Dados armazenados para sincronização:\', requestData.url);
+    console.log('[SW] Dados armazenados para sincronização:', requestData.url);
   } catch (error) {
     console.error('[SW] Erro ao armazenar dados para sync:', error);
   }
